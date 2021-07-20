@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/cameraFragment"
+        android:icon="@drawable/ic_camera"
+        android:title="@string/camera_label" />
+
+    <item
+        android:id="@+id/detectFragment"
+        android:icon="@drawable/ic_person"
+        android:title="@string/detect_label" />
+
+    <item
+        android:id="@+id/compareFragment"
+        android:icon="@drawable/ic_people"
+        android:title="@string/compare_label" />
+</menu>

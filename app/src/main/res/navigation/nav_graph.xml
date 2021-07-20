@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/cameraFragment">
+    <fragment
+        android:id="@+id/detectFragment"
+        android:name="ai.cyberlabs.perselitedemo.fragment.DetectFragment"
+        android:label="fragment_detect"
+        tools:layout="@layout/detect_fragment" >
+        <action
+            android:id="@+id/action_detectFragment_to_compareFragment"
+            app:destination="@id/compareFragment" />
+        <action
+            android:id="@+id/action_detectFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/compareFragment"
+        android:name="ai.cyberlabs.perselitedemo.fragment.CompareFragment"
+        android:label="fragment_compare"
+        tools:layout="@layout/compare_fragment" >
+        <action
+            android:id="@+id/action_compareFragment_to_detecFragment"
+            app:destination="@id/detectFragment" />
+        <action
+            android:id="@+id/action_compareFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="ai.cyberlabs.perselitedemo.fragment.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/camera_fragment">
+        <action
+            android:id="@+id/action_cameraFragment_to_detectFragment"
+            app:destination="@id/detectFragment" />
+        <action
+            android:id="@+id/action_cameraFragment_to_compareFragment"
+            app:destination="@id/compareFragment" />
+    </fragment>
+</navigation>
