@@ -7,7 +7,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory
 
 open class PerseLite(apiKey: String) {
 
-    var face: Face = Face()
+    val face: Face = Face()
 
     companion object {
         lateinit var perseAPIKey: String
