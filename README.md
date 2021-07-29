@@ -1,4 +1,4 @@
-# Perse SDK Android
+# Perse SDK Lite Android
 From [CyberLabs.AI](https://cyberlabs.ai/).  
 _Ready to go biometric verification for the internet._
 
