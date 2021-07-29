@@ -1,9 +1,19 @@
+/**
+ * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ * | PerseLite is lib for Android applications                       |
+ * | Haroldo Teruya & Victor Goulart @ Cyberlabs AI 2021             |
+ * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ */
+
 package ai.cyberlabs.perselite.model
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 
+/**
+ * Models to wrapper the API Response.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class CompareResponse(
     @JsonProperty("similarity") val similarity: Float,

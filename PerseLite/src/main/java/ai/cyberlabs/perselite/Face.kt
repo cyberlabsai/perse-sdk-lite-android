@@ -1,3 +1,10 @@
+/**
+ * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ * | PerseLite is lib for Android applications                      |
+ * | Haroldo Teruya & Victor Goulart @ Cyberlabs AI 2021        |
+ * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ */
+
 package ai.cyberlabs.perselite
 
 import ai.cyberlabs.perselite.PerseLite.Companion.apiInstance
@@ -10,8 +17,14 @@ import okhttp3.MediaType
 import okhttp3.RequestBody
 import java.io.File
 
+/**
+ * This class has the functions responsibles to call API and retrieve the Response
+ */
 open class Face {
 
+    /**
+     * Send Image by ByteArray to API and return the DetectResponse Object
+     */
     fun detect(
         imageFile: ByteArray,
         onSuccess: (DetectResponse) -> Unit,
@@ -31,6 +44,9 @@ open class Face {
             ).isDisposed
     }
 
+    /**
+     * Send Image by Image Path to API and return the DetectResponse Object
+     */
     fun detect(
         imagePath: String,
         onSuccess: (DetectResponse) -> Unit,
@@ -51,6 +67,9 @@ open class Face {
             ).isDisposed
     }
 
+    /**
+     * Send two Images by ByteArray to API to return the CompareResponse of the API
+     */
     fun compare(
         imageFile1: ByteArray,
         imageFile2: ByteArray,
@@ -72,6 +91,9 @@ open class Face {
             ).isDisposed
     }
 
+    /**
+     * Send two Images by Image Path to API to return the CompareResponse of the API
+     */
     fun compare(
         imagePath1: String,
         imagePath2: String,

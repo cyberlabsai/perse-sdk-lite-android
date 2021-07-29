@@ -1,3 +1,10 @@
+/**
+ * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ * | PerseLite is lib for Android applications                       |
+ * | Haroldo Teruya & Victor Goulart @ Cyberlabs AI 2021             |
+ * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ */
+
 package ai.cyberlabs.perselite
 
 import ai.cyberlabs.perselite.model.CompareResponse
@@ -6,6 +13,9 @@ import io.reactivex.Observable
 import okhttp3.RequestBody
 import retrofit2.http.*
 
+/**
+ * This class has the interface that represents the API Call
+ */
 interface PerseAPI {
     @Multipart
     @POST("face/detect")
