@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/cyberlabsai/perse-sdk-lite-android/master/assets/logo_cyberlabs.png" width="300" />
+<img src="https://raw.githubusercontent.com/cyberlabsai/perse-sdk-lite-android/main/assets/logo_cyberlabs.png" width="300" />
 
 # Perse SDK Lite Android
 From [CyberLabs.AI](https://cyberlabs.ai/).  
