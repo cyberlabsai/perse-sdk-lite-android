@@ -182,8 +182,6 @@ class CameraFragment: Fragment() {
             activity.perseLite.face.detect(
                 imagePath,
                 {
-                    Log.d("TESTE_PERSE _", it.toString())
-
                     setImageUnderexpose(it.imageMetrics.underexposure)
                     setImageSharpness(it.imageMetrics.sharpness)
                     setFaceUnderexpose(it.faces.first().faceMetrics.underexposure)
@@ -198,7 +196,7 @@ class CameraFragment: Fragment() {
                     cameraView.setFaceContoursColor(255,255,0,0)
                 },
                 {
-                    Log.d("TESTE_PERSE", it)
+                    Log.d("PerseCamera error", it)
                 }
             )
 
