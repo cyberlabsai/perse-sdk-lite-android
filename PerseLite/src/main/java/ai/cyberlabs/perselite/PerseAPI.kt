@@ -1,6 +1,8 @@
 /**
  * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * | PerseLite is lib for Android applications                       |
+ * | Perse SDK Lite Android.                                         |
+ * | More About: https://www.getperse.com/                           |
+ * | From CyberLabs.AI: https://cyberlabs.ai/                        |
  * | Haroldo Teruya & Victor Goulart @ Cyberlabs AI 2021             |
  * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
  */
@@ -14,7 +16,7 @@ import okhttp3.RequestBody
 import retrofit2.http.*
 
 /**
- * This class has the interface that represents the API Call
+ * This class has the interface that represents the API Call.
  */
 interface PerseAPI {
     @Multipart

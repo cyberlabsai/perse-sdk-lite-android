@@ -45,17 +45,16 @@ class DetectAdapter: RecyclerView.Adapter<DetectAdapter.ViewHolder>() {
             list.add(Pair("Face ".plus(i.toString()), ""))
             list.add(Pair("Liveness score", face.livenessScore.toString()))
             list.add(Pair("Bounding box", face.boundingBox.toString()))
-            list.add(Pair("Confidence", face.confidence.toString()))
 
             list.add(Pair("Face Metrics ".plus(i.toString()), ""))
-            list.add(Pair("Overexpose", face.faceMetrics.overexpose.toString()))
-            list.add(Pair("Underexpose", face.faceMetrics.underexpose.toString()))
+            list.add(Pair("Overexposure", face.faceMetrics.overexposure.toString()))
+            list.add(Pair("Underexposure", face.faceMetrics.underexposure.toString()))
             list.add(Pair("Sharpness", face.faceMetrics.sharpness.toString()))
         }
 
         list.add(Pair("Image Metrics", ""))
-        list.add(Pair("Overexpose", detectResponse.imageMetrics.overexpose.toString()))
-        list.add(Pair("Underexpose", detectResponse.imageMetrics.underexpose.toString()))
+        list.add(Pair("Overexposure", detectResponse.imageMetrics.overexposure.toString()))
+        list.add(Pair("Underexposure", detectResponse.imageMetrics.underexposure.toString()))
         list.add(Pair("Sharpness", detectResponse.imageMetrics.sharpness.toString()))
         this.data = list
         notifyDataSetChanged()

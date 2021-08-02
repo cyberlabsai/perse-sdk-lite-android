@@ -1,7 +1,9 @@
 /**
  * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * | PerseLite is lib for Android applications                      |
- * | Haroldo Teruya & Victor Goulart @ Cyberlabs AI 2021        |
+ * | Perse SDK Lite Android.                                         |
+ * | More About: https://www.getperse.com/                           |
+ * | From CyberLabs.AI: https://cyberlabs.ai/                        |
+ * | Haroldo Teruya & Victor Goulart @ Cyberlabs AI 2021             |
  * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
  */
 
@@ -18,7 +20,7 @@ import okhttp3.RequestBody
 import java.io.File
 
 /**
- * This class has the functions responsibles to call API and retrieve the Response
+ * This class has the functions responsible to call API and retrieve the Response.
  */
 open class Face {
 

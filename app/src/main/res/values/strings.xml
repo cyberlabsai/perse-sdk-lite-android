@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Perse</string>
+    <string name="app_name">PerseLite Demo</string>
     <string name="detect_label">Detect</string>
     <string name="compare_label">Compare</string>
     <string name="choose_image_label">Choose Image</string>
@@ -23,9 +23,9 @@
     <string name="left_eye_open_probability">Left eye open: %1$s%%</string>
     <string name="smiling_probability">Smiling: %1$s%%</string>
     <string name="image_underexpose_probability">Image underexpose: %1$s%%</string>
-    <string name="image_sharpness_probability">Image sharpness: %1$s%%</string>
+    <string name="image_sharpness_probability">Image Blurred: %1$s%%</string>
     <string name="face_underexpose_probability">Face underexpose: %1$s%%</string>
-    <string name="face_sharpness_probability">Face sharpness: %1$s%%</string>
+    <string name="face_sharpness_probability">Face Blurred: %1$s%%</string>
     <string name="right_eye_open">Right eye open: </string>
     <string name="left_eye_open">Left eye open: </string>
     <string name="smiling">Smiling: </string>

@@ -53,6 +53,10 @@ class CameraFragment: Fragment() {
         if (allPermissionsGranted()) {
             cameraView.startPreview()
             cameraView.startCaptureType("face")
+            cameraView.detectionTopSize = 0.2f
+            cameraView.detectionRightSize = 0.2f
+            cameraView.detectionBottomSize = 0.2f
+            cameraView.detectionLeftSize = 0.2f
             cameraView.setSaveImageCaptured(true)
             cameraView.setDetectionBox(true)
             cameraView.setFaceContours(true)
@@ -80,7 +84,7 @@ class CameraFragment: Fragment() {
         if (requestCode == PackageManager.PERMISSION_GRANTED) {
             if (allPermissionsGranted()) {
                 cameraView.startPreview()
-                cameraView.startCaptureType("frame")
+                cameraView.startCaptureType("face")
                 cameraView.setSaveImageCaptured(true)
             } else {
                 Toast.makeText(
@@ -101,7 +105,18 @@ class CameraFragment: Fragment() {
             Log.d("OnError", error)
         }
 
-        override fun onFaceDetected(x: Int, y: Int, width: Int, height: Int, leftEyeOpenProbability: Float?, rightEyeOpenProbability: Float?, smilingProbability: Float?, headEulerAngleX: Float, headEulerAngleY: Float, headEulerAngleZ: Float) {
+        override fun onFaceDetected(
+            x: Int,
+            y: Int,
+            width: Int,
+            height: Int,
+            leftEyeOpenProbability: Float?,
+            rightEyeOpenProbability: Float?,
+            smilingProbability: Float?,
+            headEulerAngleX: Float,
+            headEulerAngleY: Float,
+            headEulerAngleZ: Float
+        ) {
             leftEyeOpenProbability?.let {
                 left_eye_tv.text = getString(R.string.left_eye_open_probability, it.times(100).toString().substring(0,4))
                 if (it > 0.8) {
@@ -154,14 +169,25 @@ class CameraFragment: Fragment() {
             image_preview.visibility = View.GONE
         }
 
-        override fun onImageCaptured(type: String, count: Int, total: Int, imagePath: String, inferences: ArrayList<Pair<String, FloatArray>>, darkness: Double, lightness: Double, sharpness: Double) {
+        override fun onImageCaptured(
+            type: String,
+            count: Int,
+            total: Int,
+            imagePath: String,
+            inferences: ArrayList<Pair<String, FloatArray>>,
+            darkness: Double,
+            lightness: Double,
+            sharpness: Double
+        ) {
             activity.perseLite.face.detect(
                 imagePath,
                 {
+                    Log.d("TESTE_PERSE _", it.toString())
+
+                    setImageUnderexpose(it.imageMetrics.underexposure)
                     setImageSharpness(it.imageMetrics.sharpness)
-                    setImageUnderexpose(it.imageMetrics.underexpose)
+                    setFaceUnderexpose(it.faces.first().faceMetrics.underexposure)
                     setFaceSharpness(it.faces.first().faceMetrics.sharpness)
-                    setFaceUnderexpose(it.faces.first().faceMetrics.underexpose)
 
                     if (it.faces.first().livenessScore > 0.8) {
                         cameraView.setDetectionBoxColor(255,0,255,0)

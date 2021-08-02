@@ -1,6 +1,8 @@
 /**
  * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * | PerseLite is lib for Android applications                       |
+ * | Perse SDK Lite Android.                                         |
+ * | More About: https://www.getperse.com/                           |
+ * | From CyberLabs.AI: https://cyberlabs.ai/                        |
  * | Haroldo Teruya & Victor Goulart @ Cyberlabs AI 2021             |
  * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
  */
@@ -33,7 +35,6 @@ data class DetectResponse(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class FaceResponse(
     @JsonProperty("landmarks") val landmarks: LandmarksResponse,
-    @JsonProperty("confidence") val confidence: Int,
     @JsonProperty("bounding_box") val boundingBox: List<Int>,
     @JsonProperty("face_metrics") val faceMetrics: MetricsResponse,
     @JsonProperty("liveness_score") val livenessScore: Float
@@ -41,8 +42,8 @@ data class FaceResponse(
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class MetricsResponse(
-    @JsonProperty("underexpose") val underexpose: Float,
-    @JsonProperty("overexpose") val overexpose: Float,
+    @JsonProperty("underexposure") val underexposure: Float,
+    @JsonProperty("overexposure") val overexposure: Float,
     @JsonProperty("sharpness") val sharpness: Float
 ): Serializable
 
@@ -57,13 +58,13 @@ data class LandmarksResponse(
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class DetectThresholdsResponse(
-        @JsonProperty("sharpnessThreshold") val sharpnessThreshold: Float,
-        @JsonProperty("underexposerThreshold") val underexposerThreshold: Float,
-        @JsonProperty("overexposureThreshold") val overexposureThreshold: Float,
-        @JsonProperty("livenessThreshold") val livenessThreshold: Float
+        @JsonProperty("sharpness") val sharpness: Float,
+        @JsonProperty("underexposure") val underexposure: Float,
+        @JsonProperty("overexposure") val overexposure: Float,
+        @JsonProperty("liveness") val liveness: Float
 ): Serializable
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class CompareThresholdsResponse(
-        @JsonProperty("similarityThreshold") val similarityThreshold: Float
+        @JsonProperty("similarity") val similarity: Float
 ): Serializable
