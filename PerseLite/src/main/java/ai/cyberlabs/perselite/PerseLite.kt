@@ -17,7 +17,10 @@ import retrofit2.converter.jackson.JacksonConverterFactory
 /**
  * This class has the classes responsible to call the API and retrieve the Data.
  */
-open class PerseLite(apiKey: String) {
+open class PerseLite(
+    apiKey: String,
+    baseUrl: String = BuildConfig.BASE_URL
+) {
 
     val face: Face = Face()
 
@@ -33,7 +36,7 @@ open class PerseLite(apiKey: String) {
         perseAPIKey = apiKey
 
         apiInstance = Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(baseUrl)
             .client(OkHttpClient.Builder().build())
             .addConverterFactory(JacksonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
