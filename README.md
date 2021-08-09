@@ -11,6 +11,8 @@ The Perse library SDK:
 * Compare the similarity between two faces;
 * Doesn't store any photos;
 
+<img src="https://raw.githubusercontent.com/cyberlabsai/perse-sdk-lite-android/main/assets/anti_spoof.gif" width="300" />
+
 For more details, you can see the [Official Perse](https://www.getperse.com/).
 
 > #### Soon voice biometric verification.
