@@ -54,7 +54,7 @@
         android:text="@string/smiling" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/face_underexpose_tv"
+        android:id="@+id/face_underexposure_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_neutral"
@@ -64,7 +64,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/smiling_tv"
-        android:text="@string/face_underexpose" />
+        android:text="@string/face_underexposure" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/face_sharpness_tv"
@@ -76,11 +76,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/face_underexpose_tv"
+        app:layout_constraintTop_toBottomOf="@+id/face_underexposure_tv"
         android:text="@string/face_sharpness" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/image_underexpose_tv"
+        android:id="@+id/image_underexposure_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_neutral"
@@ -90,7 +90,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/face_sharpness_tv"
-        android:text="@string/image_underexpose" />
+        android:text="@string/image_underexposure" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/image_sharpness_tv"
@@ -102,7 +102,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_underexpose_tv"
+        app:layout_constraintTop_toBottomOf="@+id/image_underexposure_tv"
         android:text="@string/image_sharpness" />
 
     <androidx.appcompat.widget.AppCompatTextView

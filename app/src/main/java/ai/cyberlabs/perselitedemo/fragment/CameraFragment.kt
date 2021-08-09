@@ -153,16 +153,16 @@ class CameraFragment: Fragment() {
             right_eye_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_neutral,0,0,0)
             smiling_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_neutral,0,0,0)
             image_sharpness_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_neutral,0,0,0)
-            image_underexpose_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_neutral,0,0,0)
+            image_underexposure_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_neutral,0,0,0)
             face_sharpness_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_neutral,0,0,0)
-            face_underexpose_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_neutral,0,0,0)
+            face_underexposure_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_neutral,0,0,0)
             left_eye_tv.text = getString(R.string.left_eye_open)
             right_eye_tv.text = getString(R.string.right_eye_open)
             smiling_tv.text = getString(R.string.smiling)
             image_sharpness_tv.text = getString(R.string.image_sharpness)
-            image_underexpose_tv.text = getString(R.string.image_underexpose)
+            image_underexposure_tv.text = getString(R.string.image_underexposure)
             face_sharpness_tv.text = getString(R.string.face_sharpness)
-            face_underexpose_tv.text = getString(R.string.face_underexpose)
+            face_underexposure_tv.text = getString(R.string.face_underexposure)
             horizontal_movement_tv.text = getString(R.string.horizontal_movement)
             vertical_movement_tv.text = getString(R.string.vertical_movement)
             tilt_movement_tv.text = getString(R.string.tilt_movement)
@@ -182,9 +182,9 @@ class CameraFragment: Fragment() {
             activity.perseLite.face.detect(
                 imagePath,
                 {
-                    setImageUnderexpose(it.imageMetrics.underexposure)
+                    setImageUnderexposure(it.imageMetrics.underexposure)
                     setImageSharpness(it.imageMetrics.sharpness)
-                    setFaceUnderexpose(it.faces.first().faceMetrics.underexposure)
+                    setFaceUnderexposure(it.faces.first().faceMetrics.underexposure)
                     setFaceSharpness(it.faces.first().faceMetrics.sharpness)
 
                     if (it.faces.first().livenessScore > 0.8) {
@@ -234,17 +234,17 @@ class CameraFragment: Fragment() {
         image_sharpness_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_off,0,0,0)
     }
 
-    private fun setImageUnderexpose(underexpose: Float) {
-        image_underexpose_tv.text =
+    private fun setImageUnderexposure(underexposure: Float) {
+        image_underexposure_tv.text =
             getString(
-                R.string.image_underexpose_probability,
-                underexpose.times(100).toString().substring(0,4)
+                R.string.image_underexposure_probability,
+                underexposure.times(100).toString().substring(0,4)
             )
-        if (underexpose < 0.5) {
-            image_underexpose_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_check,0,0,0)
+        if (underexposure < 0.5) {
+            image_underexposure_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_check,0,0,0)
             return
         }
-        image_underexpose_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_off,0,0,0)
+        image_underexposure_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_off,0,0,0)
     }
 
     private fun setFaceSharpness(sharpness: Float) {
@@ -260,17 +260,17 @@ class CameraFragment: Fragment() {
         face_sharpness_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_off,0,0,0)
     }
 
-    private fun setFaceUnderexpose(underexpose: Float) {
-        face_underexpose_tv.text =
+    private fun setFaceUnderexposure(underexposure: Float) {
+        face_underexposure_tv.text =
             getString(
-                R.string.face_underexpose_probability,
-                underexpose.times(100).toString().substring(0,4)
+                R.string.face_underexposure_probability,
+                underexposure.times(100).toString().substring(0,4)
             )
-        if (underexpose < 0.5) {
-            face_underexpose_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_check,0,0,0)
+        if (underexposure < 0.5) {
+            face_underexposure_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_check,0,0,0)
             return
         }
-        face_underexpose_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_off,0,0,0)
+        face_underexposure_tv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_off,0,0,0)
     }
 
     private fun setFaceHorizontalMovement(headAngleY: Float) {
