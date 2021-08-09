@@ -20,7 +20,7 @@ import java.io.Serializable
 data class CompareResponse(
     @JsonProperty("similarity") val similarity: Float,
     @JsonProperty("time_taken") val timeTaken: Float,
-    @JsonProperty("default_thresholds") val thresholds: CompareThresholdsResponse
+    @JsonProperty("default_thresholds") val defaultThresholds: CompareThresholdsResponse
 ): Serializable
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -28,8 +28,8 @@ data class DetectResponse(
     @JsonProperty("total_faces") val totalFaces: Int,
     @JsonProperty("faces") val faces: List<FaceResponse>,
     @JsonProperty("image_metrics") val imageMetrics: MetricsResponse,
-    @JsonProperty("time_take") val timeTaken: Float,
-    @JsonProperty("default_thresholds") val thresholds: DetectThresholdsResponse
+    @JsonProperty("time_taken") val timeTaken: Float,
+    @JsonProperty("default_thresholds") val defaultThresholds: DetectThresholdsResponse
 ): Serializable
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -58,13 +58,13 @@ data class LandmarksResponse(
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class DetectThresholdsResponse(
-        @JsonProperty("sharpness") val sharpness: Float,
-        @JsonProperty("underexposure") val underexposure: Float,
-        @JsonProperty("overexposure") val overexposure: Float,
-        @JsonProperty("liveness") val liveness: Float
+    @JsonProperty("sharpness") val sharpness: Float,
+    @JsonProperty("underexposure") val underexposure: Float,
+    @JsonProperty("overexposure") val overexposure: Float,
+    @JsonProperty("liveness") val liveness: Float
 ): Serializable
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class CompareThresholdsResponse(
-        @JsonProperty("similarity") val similarity: Float
+    @JsonProperty("similarity") val similarity: Float
 ): Serializable

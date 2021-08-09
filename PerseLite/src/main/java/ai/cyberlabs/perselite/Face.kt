@@ -25,7 +25,7 @@ import java.io.File
 open class Face {
 
     /**
-     * Send Image by ByteArray to API and return the DetectResponse Object
+     * Send Image by ByteArray to API and return the DetectResponse Object.
      */
     fun detect(
         imageFile: ByteArray,
@@ -47,7 +47,7 @@ open class Face {
     }
 
     /**
-     * Send Image by Image Path to API and return the DetectResponse Object
+     * Send Image by Image Path to API and return the DetectResponse Object.
      */
     fun detect(
         imagePath: String,
@@ -70,7 +70,7 @@ open class Face {
     }
 
     /**
-     * Send two Images by ByteArray to API to return the CompareResponse of the API
+     * Send two Images by ByteArray to API to return the CompareResponse of the API.
      */
     fun compare(
         imageFile1: ByteArray,
@@ -94,7 +94,7 @@ open class Face {
     }
 
     /**
-     * Send two Images by Image Path to API to return the CompareResponse of the API
+     * Send two Images by Image Path to API to return the CompareResponse of the API.
      */
     fun compare(
         imagePath1: String,
