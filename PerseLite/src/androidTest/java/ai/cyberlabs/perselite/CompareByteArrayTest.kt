@@ -1,158 +1,92 @@
 package ai.cyberlabs.perselite
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import org.assertj.core.api.Assertions
+import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.io.ByteArrayOutputStream
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 
 @RunWith(AndroidJUnit4::class)
 class CompareByteArrayTest {
 
-    private val context = InstrumentationRegistry.getInstrumentation().context
+    private val context = InstrumentationRegistry
+        .getInstrumentation()
+        .context
 
     @Test
     fun test_with_same_human() {
-        val perse = PerseLite(BuildConfig.API_KEY)
-        val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.haroldo)
-        val byteArrayOutputStream = ByteArrayOutputStream()
-        bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
-        val byteArray = byteArrayOutputStream.toByteArray()
-
-        val lock = CountDownLatch(1)
-        var similarity = 0f
-
-        perse.face.compare(
-            byteArray,
-            byteArray,
+        compareWithByteArray(
+            this.context,
+            R.drawable.human_1,
+            R.drawable.human_2,
+            BuildConfig.API_KEY,
             {
-                similarity = it.similarity
-                lock.countDown()
+                val similarity = it.similarity
+                val defaultSimilarity = it.defaultThresholds.similarity
+
+                Assertions.assertThat(similarity)
+                    .isGreaterThan(defaultSimilarity)
             },
-            {
-                lock.countDown()
-            }
+            { Assertions.assertThat(false) }
         )
-        lock.await(10000, TimeUnit.MILLISECONDS)
-        Assertions.assertThat(similarity).isGreaterThan(80f)
     }
 
     @Test
     fun test_with_different_human() {
-        val perse = PerseLite(BuildConfig.API_KEY)
-        val firstHumanBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.haroldo)
-        val firstHumanByteArrayOutputStream = ByteArrayOutputStream()
-        firstHumanBitmap?.compress(Bitmap.CompressFormat.JPEG, 100, firstHumanByteArrayOutputStream)
-        val firstHumanByteArray = firstHumanByteArrayOutputStream.toByteArray()
-
-        val secondHumanBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.human)
-        val secondHumanByteArrayOutputStream = ByteArrayOutputStream()
-        secondHumanBitmap?.compress(Bitmap.CompressFormat.JPEG, 100, secondHumanByteArrayOutputStream)
-        val secondHumanByteArray = secondHumanByteArrayOutputStream.toByteArray()
-
-        val lock = CountDownLatch(1)
-        var similarity = 0f
-
-        perse.face.compare(
-            firstHumanByteArray,
-            secondHumanByteArray,
+        compareWithByteArray(
+            this.context,
+            R.drawable.human_1,
+            R.drawable.wall,
+            BuildConfig.API_KEY,
             {
-                similarity = it.similarity
-                lock.countDown()
+                val similarity = it.similarity
+                val defaultSimilarity = it.defaultThresholds.similarity
+
+                Assertions.assertThat(similarity)
+                    .isLessThan(defaultSimilarity)
             },
-            {
-                lock.countDown()
-            }
+            { Assertions.assertThat(false) }
         )
-        lock.await(10000, TimeUnit.MILLISECONDS)
-        Assertions.assertThat(similarity).isLessThan(20f)
     }
 
     @Test
     fun test_with_human_and_non_human() {
-        val perse = PerseLite(BuildConfig.API_KEY)
-        val humanBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.haroldo)
-        val humanByteArrayOutputStream = ByteArrayOutputStream()
-        humanBitmap?.compress(Bitmap.CompressFormat.JPEG, 100, humanByteArrayOutputStream)
-        val humanByteArray = humanByteArrayOutputStream.toByteArray()
-
-        val nonHumanBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.wall)
-        val nonHumanByteArrayOutputStream = ByteArrayOutputStream()
-        nonHumanBitmap?.compress(Bitmap.CompressFormat.JPEG, 100, nonHumanByteArrayOutputStream)
-        val nonHumanByteArray = nonHumanByteArrayOutputStream.toByteArray()
-
-        val lock = CountDownLatch(1)
-        var error = ""
-
-        perse.face.compare(
-            humanByteArray,
-            nonHumanByteArray,
+        compareWithByteArray(
+            this.context,
+            R.drawable.human_1,
+            R.drawable.wall,
+            BuildConfig.API_KEY,
+            { Assertions.assertThat(false) },
             {
-                lock.countDown()
-            },
-            {
-                error = it
-                lock.countDown()
+                Assertions.assertThat(it).isEqualTo("HTTP 400 ")
             }
         )
-        lock.await(10000, TimeUnit.MILLISECONDS)
-        Assertions.assertThat(error).isEqualTo("HTTP 402 ")
     }
 
     @Test
     fun test_with_non_human() {
-        val perse = PerseLite(BuildConfig.API_KEY)
-        val nonHumanBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.wall)
-        val nonHumanByteArrayOutputStream = ByteArrayOutputStream()
-        nonHumanBitmap?.compress(Bitmap.CompressFormat.JPEG, 100, nonHumanByteArrayOutputStream)
-        val nonHumanByteArray = nonHumanByteArrayOutputStream.toByteArray()
-
-        val lock = CountDownLatch(1)
-        var error = ""
-
-        perse.face.compare(
-            nonHumanByteArray,
-            nonHumanByteArray,
+        compareWithByteArray(
+            this.context,
+            R.drawable.dog,
+            R.drawable.wall,
+            BuildConfig.API_KEY,
+            { Assertions.assertThat(false) },
             {
-                lock.countDown()
-            },
-            {
-                error = it
-                lock.countDown()
+                Assertions.assertThat(it).isEqualTo("HTTP 402 ")
             }
         )
-        lock.await(10000, TimeUnit.MILLISECONDS)
-        Assertions.assertThat(error).isEqualTo("HTTP 402 ")
     }
 
     @Test
     fun test_with_invalid_api_key() {
-        val perse = PerseLite("xxxxxx")
-        val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.haroldo)
-        val byteArrayOutputStream = ByteArrayOutputStream()
-        bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
-        val byteArray = byteArrayOutputStream.toByteArray()
-
-        val lock = CountDownLatch(1)
-        var error = ""
-
-        perse.face.compare(
-            byteArray,
-            byteArray,
-            {
-                lock.countDown()
-            },
-            {
-                error = it
-                lock.countDown()
-            }
+        compareWithByteArray(
+            this.context,
+            R.drawable.human_1,
+            R.drawable.human_2,
+            "xxxx",
+            { Assert.assertTrue(false) },
+            { Assertions.assertThat(it).isEqualTo("HTTP 403 ") }
         )
-        lock.await(10000, TimeUnit.MILLISECONDS)
-        Assertions.assertThat(error).isEqualTo("HTTP 403 ")
     }
 }
