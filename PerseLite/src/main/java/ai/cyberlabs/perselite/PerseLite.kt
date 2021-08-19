@@ -26,7 +26,7 @@ open class PerseLite(
 
     companion object {
         lateinit var perseAPIKey: String
-        lateinit var apiInstance: PerseAPI
+        lateinit var api: PerseAPI
     }
 
     /**
@@ -35,7 +35,7 @@ open class PerseLite(
     init {
         perseAPIKey = apiKey
 
-        apiInstance = Retrofit.Builder()
+        api = Retrofit.Builder()
             .baseUrl(baseUrl)
             .client(OkHttpClient.Builder().build())
             .addConverterFactory(JacksonConverterFactory.create())

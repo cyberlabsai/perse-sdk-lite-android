@@ -32,7 +32,7 @@ android {
 
         debug {
             debuggable true
-            buildConfigField "String", "BASE_URL", "\"https://api.stg.getperse.com/v0/\""
+            buildConfigField "String", "BASE_URL", "\"https://api.dev.getperse.com/v0/\""
         }
     }
     compileOptions {
