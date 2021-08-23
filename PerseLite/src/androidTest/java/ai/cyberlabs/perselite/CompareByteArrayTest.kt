@@ -59,7 +59,7 @@ class CompareByteArrayTest {
             BuildConfig.API_KEY,
             { Assertions.assertThat(false) },
             {
-                Assertions.assertThat(it).isEqualTo("HTTP 400 ")
+                Assertions.assertThat(it).isEqualTo("HTTP 402 ")
             }
         )
     }

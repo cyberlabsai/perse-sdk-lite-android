@@ -59,7 +59,7 @@ class ComparePathTest {
             BuildConfig.API_KEY,
             { assertThat(false) },
             {
-                assertThat(it).isEqualTo("HTTP 400 ")
+                assertThat(it).isEqualTo("HTTP 402 ")
             }
         )
     }
