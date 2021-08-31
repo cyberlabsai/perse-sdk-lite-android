@@ -38,12 +38,12 @@ interface PerseAPI {
     fun create(
         @Header("x-api-key") apiKey: String,
         @Part("image_file") imageFile: RequestBody
-    ) :Observable<PerseAPIResponse.Enrollment.Face.Create>
+    ) :Observable<PerseAPIResponse.Face.Enrollment.Create>
 
     @GET("face/enrollment/list")
     fun read(
         @Header("x-api-key") apiKey: String
-    ) :Observable<PerseAPIResponse.Enrollment.Face.Read>
+    ) :Observable<PerseAPIResponse.Face.Enrollment.Read>
 
     @Multipart
     @PUT("face/enrollment")
@@ -51,11 +51,11 @@ interface PerseAPI {
         @Header("x-api-key") apiKey: String,
         @Part("image_file") imageFile: RequestBody,
         @Part("user_token") userToken: String
-    ) :Observable<PerseAPIResponse.Enrollment.Face.Update>
+    ) :Observable<PerseAPIResponse.Face.Enrollment.Update>
 
     @DELETE("face/enrollment/{user_token}")
     fun delete(
         @Header("x-api-key") apiKey: String,
         @Path("user_token") userToken: String
-    ) :Observable<PerseAPIResponse.Enrollment.Face.Delete>
+    ) :Observable<PerseAPIResponse.Face.Enrollment.Delete>
 }

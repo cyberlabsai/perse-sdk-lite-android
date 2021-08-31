@@ -70,11 +70,8 @@ class PerseAPIResponse {
         data class CompareThresholds(
             @JsonProperty("similarity") val similarity: Float
         ): Serializable
-    }
 
-    class Enrollment {
-        class Face {
-
+        class Enrollment {
             @JsonIgnoreProperties(ignoreUnknown = true)
             data class Create(
                 @JsonProperty("user_token") val userToken: String,

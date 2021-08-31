@@ -77,16 +77,4 @@ class ComparePathTest {
             }
         )
     }
-
-    @Test
-    fun test_with_invalid_api_key() {
-        compareWithFile(
-            this.context,
-            R.drawable.human_1,
-            R.drawable.human_2,
-            "xxxx",
-            { Assert.assertTrue(false) },
-            { assertThat(it).isEqualTo("HTTP 403 ") }
-        )
-    }
 }

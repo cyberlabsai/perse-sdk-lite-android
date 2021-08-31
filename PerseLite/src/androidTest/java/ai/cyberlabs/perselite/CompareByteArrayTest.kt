@@ -77,16 +77,4 @@ class CompareByteArrayTest {
             }
         )
     }
-
-    @Test
-    fun test_with_invalid_api_key() {
-        compareWithByteArray(
-            this.context,
-            R.drawable.human_1,
-            R.drawable.human_2,
-            "xxxx",
-            { Assert.assertTrue(false) },
-            { Assertions.assertThat(it).isEqualTo("HTTP 403 ") }
-        )
-    }
 }

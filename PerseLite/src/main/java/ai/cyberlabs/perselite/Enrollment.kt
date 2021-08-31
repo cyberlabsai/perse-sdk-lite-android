@@ -10,7 +10,7 @@ open class Enrollment {
 
     fun create(
         imageFile: ByteArray,
-        onSuccess: (PerseAPIResponse.Enrollment.Face.Create) -> Unit,
+        onSuccess: (PerseAPIResponse.Face.Enrollment.Create) -> Unit,
         onError: (String) -> Unit
     ) {
         api
@@ -32,7 +32,7 @@ open class Enrollment {
 
     fun create(
         imagePath: String,
-        onSuccess: (PerseAPIResponse.Enrollment.Face.Create) -> Unit,
+        onSuccess: (PerseAPIResponse.Face.Enrollment.Create) -> Unit,
         onError: (String) -> Unit
     ) {
         api
@@ -53,7 +53,7 @@ open class Enrollment {
     }
 
     fun read(
-        onSuccess: (PerseAPIResponse.Enrollment.Face.Read) -> Unit,
+        onSuccess: (PerseAPIResponse.Face.Enrollment.Read) -> Unit,
         onError: (String) -> Unit
     ) {
         api.read(perseAPIKey)
@@ -72,7 +72,7 @@ open class Enrollment {
     fun update(
         userToken: String,
         imageFile: ByteArray,
-        onSuccess: (PerseAPIResponse.Enrollment.Face.Update) -> Unit,
+        onSuccess: (PerseAPIResponse.Face.Enrollment.Update) -> Unit,
         onError: (String) -> Unit
     ) {
         api
@@ -96,7 +96,7 @@ open class Enrollment {
     fun update(
         userToken: String,
         imagePath: String,
-        onSuccess: (PerseAPIResponse.Enrollment.Face.Update) -> Unit,
+        onSuccess: (PerseAPIResponse.Face.Enrollment.Update) -> Unit,
         onError: (String) -> Unit
     ) {
         api
@@ -119,7 +119,7 @@ open class Enrollment {
 
     fun delete(
         userToken: String,
-        onSuccess: (PerseAPIResponse.Enrollment.Face.Delete) -> Unit,
+        onSuccess: (PerseAPIResponse.Face.Enrollment.Delete) -> Unit,
         onError: (String) -> Unit
     ) {
         api.delete(perseAPIKey, userToken)
