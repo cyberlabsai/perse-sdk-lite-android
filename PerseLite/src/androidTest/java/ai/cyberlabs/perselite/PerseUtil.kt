@@ -1,10 +1,9 @@
 package ai.cyberlabs.perselite
 
-import ai.cyberlabs.perselite.model.CompareResponse
-import ai.cyberlabs.perselite.model.DetectResponse
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import org.assertj.core.api.Assertions
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -56,7 +55,7 @@ fun detectWithFile(
     context: Context,
     resource: Int,
     apiKey: String,
-    onSuccess: (DetectResponse) -> Unit,
+    onSuccess: (PerseAPIResponse.Face.Detect) -> Unit,
     onError: (String) -> Unit
 ) {
     val lock = CountDownLatch(1)
@@ -84,7 +83,7 @@ fun detectWithByteArray(
     context: Context,
     resource: Int,
     apiKey: String,
-    onSuccess: (DetectResponse) -> Unit,
+    onSuccess: (PerseAPIResponse.Face.Detect) -> Unit,
     onError: (String) -> Unit
 ) {
     val lock = CountDownLatch(1)
@@ -109,7 +108,7 @@ fun compareWithFile(
     resource1: Int,
     resource2: Int,
     apiKey: String,
-    onSuccess: (CompareResponse) -> Unit,
+    onSuccess: (PerseAPIResponse.Face.Compare) -> Unit,
     onError: (String) -> Unit
 ) {
     val lock = CountDownLatch(1)
@@ -136,7 +135,7 @@ fun compareWithByteArray(
     resource1: Int,
     resource2: Int,
     apiKey: String,
-    onSuccess: (CompareResponse) -> Unit,
+    onSuccess: (PerseAPIResponse.Face.Compare) -> Unit,
     onError: (String) -> Unit
 ) {
     val lock = CountDownLatch(1)
@@ -155,5 +154,99 @@ fun compareWithByteArray(
             lock.countDown()
         }
     )
+    lock.await()
+}
+
+fun faceCreate(
+    context: Context,
+    resource: Int,
+    onSuccess: (PerseAPIResponse.Face.Enrollment.Create) -> Unit,
+    onError: (String) -> Unit
+) {
+    val lock = CountDownLatch(1)
+    val byteArray = getByteArray(context, resource)
+
+    PerseLite(BuildConfig.API_KEY).face.enrollment.create(
+        byteArray,
+        {
+            onSuccess(it)
+            lock.countDown()
+        },
+        {
+            onError(it)
+            lock.countDown()
+        }
+    )
+    lock.await()
+}
+
+fun faceRead(
+    onSuccess: (PerseAPIResponse.Face.Enrollment.Read) -> Unit,
+    onError: (String) -> Unit
+) {
+    val lock = CountDownLatch(1)
+
+    PerseLite(BuildConfig.API_KEY)
+        .face
+        .enrollment
+        .read(
+            {
+                onSuccess(it)
+                lock.countDown()
+            },
+            {
+                onError(it)
+                lock.countDown()
+            }
+        )
+    lock.await()
+}
+
+fun faceUpdate(
+    context: Context,
+    resource: Int,
+    userToken: String,
+    onSuccess: (PerseAPIResponse.Face.Enrollment.Update) -> Unit,
+    onError: (String) -> Unit
+) {
+    val lock = CountDownLatch(1)
+    val byteArray = getByteArray(context, resource)
+
+    PerseLite(BuildConfig.API_KEY).face.enrollment.update(
+        userToken,
+        byteArray,
+        {
+            onSuccess(it)
+            lock.countDown()
+        },
+        {
+            onError(it)
+            lock.countDown()
+        }
+    )
+    lock.await()
+}
+
+fun faceDelete(
+    userToken: String,
+    onSuccess: (PerseAPIResponse.Face.Enrollment.Delete) -> Unit,
+    onError: (String) -> Unit
+) {
+    val lock = CountDownLatch(1)
+
+    PerseLite(BuildConfig.API_KEY)
+        .face
+        .enrollment
+        .delete(
+            userToken,
+            {
+                onSuccess(it)
+                lock.countDown()
+            },
+            {
+                onError(it)
+                lock.countDown()
+            }
+        )
     lock.await()
 }

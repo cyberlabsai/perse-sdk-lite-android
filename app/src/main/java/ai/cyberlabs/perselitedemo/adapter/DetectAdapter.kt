@@ -1,6 +1,5 @@
 package ai.cyberlabs.perselitedemo.adapter
 
-import ai.cyberlabs.perselite.model.DetectResponse
 import ai.cyberlabs.perselitedemo.R
 import android.view.LayoutInflater
 import android.view.View
@@ -35,7 +34,7 @@ class DetectAdapter: RecyclerView.Adapter<DetectAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = this.data.size
 
-    fun setData(detectResponse: DetectResponse) {
+    fun setData(detectResponse: PerseAPIResponse.Face.Detect) {
         val list: MutableList<Pair<String, String>> = ArrayList()
         list.add(Pair("Detected Faces", detectResponse.totalFaces.toString()))
 

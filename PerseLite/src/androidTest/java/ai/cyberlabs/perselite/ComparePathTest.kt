@@ -59,7 +59,7 @@ class ComparePathTest {
             BuildConfig.API_KEY,
             { assertThat(false) },
             {
-                assertThat(it).isEqualTo("HTTP 400 ")
+                assertThat(it).isEqualTo("HTTP 402 ")
             }
         )
     }
@@ -75,18 +75,6 @@ class ComparePathTest {
             {
                 assertThat(it).isEqualTo("HTTP 402 ")
             }
-        )
-    }
-
-    @Test
-    fun test_with_invalid_api_key() {
-        compareWithFile(
-            this.context,
-            R.drawable.human_1,
-            R.drawable.human_2,
-            "xxxx",
-            { Assert.assertTrue(false) },
-            { assertThat(it).isEqualTo("HTTP 403 ") }
         )
     }
 }

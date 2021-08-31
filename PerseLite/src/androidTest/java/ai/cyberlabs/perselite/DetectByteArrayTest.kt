@@ -35,15 +35,4 @@ class DetectByteArrayTest {
             { Assert.assertTrue(false) }
         )
     }
-
-    @Test
-    fun test_with_invalid_api_key() {
-        detectWithByteArray(
-            this.context,
-            R.drawable.human_2,
-            "xxxx",
-            { Assert.assertTrue(false) },
-            { assertThat(it).isEqualTo("HTTP 403 ") }
-        )
-    }
 }
